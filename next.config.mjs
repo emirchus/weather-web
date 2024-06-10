@@ -6,11 +6,10 @@ const nextConfig = {
     },
   },
   rewrites: () => {
-    console.log(`https://api.weatherapi.com/v1/:path* &key=${process.env.NEXT_PUBLIC_API_KEY}`);
     return [
       {
         source: "/api/:path*",
-        destination: `https://api.weatherapi.com/v1/:path* &key=${process.env.NEXT_PUBLIC_API_KEY}`,
+        destination: `https://api.weatherapi.com/v1/:path*`,
       },
       {
         source: "/usig/:path*",
