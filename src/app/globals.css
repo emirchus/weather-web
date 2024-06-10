@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --primary: 210 86% 77%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 37.04 83.51% 80.98%;
+    --secondary-foreground: 0 0% 9%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.5rem;
+
+    --shadow: 221.2 0% 53.3%;
+
+    --base: hsl(var(--shadow) / 10%);
+
+    --shade: hsl(from var(--base) calc(h + 8) 25 calc(l - 5));
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --card: 0 0% 3.92%;
+    --card-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --primary: 210 86% 77%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 31.66 81.91% 60.98%;
+    --secondary-foreground: 0 0% 98%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --ring: 0 0% 83.1%;
+
+    --shadow: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply h-screen bg-background font-sans antialiased;
+  }
+}
+
+.item {
+  --buff: calc((100vw - (2 * var(--scroll-padding))) * 0.5);
+  animation: highlight, unlight;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+  animation-timeline: view(inline);
+  animation-range:
+    cover calc(50% - 40rem - 12rem) cover calc(50% - 40rem),
+    cover calc(50% + 40rem) cover calc(50% + 40rem + 12rem);
+  animation-range:
+    calc(50vw - var(--buff)) calc(50vw - var(--buff) + 12rem),
+    calc(50vw + var(--buff)) calc(50vw + var(--buff) + 12rem);
+}
+
+@keyframes highlight {
+  0% {
+    opacity: 0;
+  }
+}
+@keyframes unlight {
+  100% {
+    opacity: 0;
+  }
+}

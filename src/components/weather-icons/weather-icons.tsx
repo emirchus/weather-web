@@ -1,0 +1,77 @@
+import { WeatherLabel } from "@/interface/current-weather.entity";
+import {
+  Cloud,
+  CloudDrizzle,
+  CloudFog,
+  CloudHail,
+  CloudLightning,
+  CloudRain,
+  CloudRainWind,
+  CloudSnow,
+  CloudSun,
+  Cloudy,
+  Haze,
+  Snowflake,
+  Sparkles,
+  Sun,
+  LucideProps,
+} from "lucide-react";
+import { cloneElement, ReactElement } from "react";
+
+const weatherIcons: Record<WeatherLabel, React.ReactNode> = {
+  Sunny: <Sun />,
+  "Partly cloudy": <CloudSun />,
+  Cloudy: <Cloudy />,
+  Overcast: <Cloud />,
+  Mist: <Haze />,
+  "Patchy rain possible": <CloudDrizzle />,
+  "Patchy snow possible": <CloudSnow />,
+  "Patchy sleet possible": <CloudSnow />,
+  "Patchy freezing drizzle possible": <CloudDrizzle />,
+  "Thundery outbreaks possible": <CloudLightning />,
+  "Blowing snow": <Snowflake />,
+  Blizzard: <Snowflake />,
+  Fog: <CloudFog />,
+  "Freezing fog": <CloudFog />,
+  "Patchy light drizzle": <CloudDrizzle />,
+  "Light drizzle": <CloudDrizzle />,
+  "Freezing drizzle": <CloudDrizzle />,
+  "Heavy freezing drizzle": <CloudDrizzle />,
+  "Patchy light rain": <CloudRain />,
+  "Light rain": <CloudRain />,
+  "Moderate rain at times": <CloudRainWind />,
+  "Moderate rain": <CloudRainWind />,
+  "Heavy rain at times": <CloudRainWind />,
+  "Heavy rain": <CloudRainWind />,
+  "Light freezing rain": <CloudRain />,
+  "Moderate or heavy freezing rain": <CloudRainWind />,
+  "Light sleet": <CloudSnow />,
+  "Moderate or heavy sleet": <CloudSnow />,
+  "Patchy light snow": <CloudSnow />,
+  "Light snow": <CloudSnow />,
+  "Patchy moderate snow": <CloudSnow />,
+  "Moderate snow": <CloudSnow />,
+  "Patchy heavy snow": <CloudSnow />,
+  "Heavy snow": <Snowflake />,
+  "Ice pellets": <CloudHail />,
+  "Light rain shower": <CloudRain />,
+  "Moderate or heavy rain shower": <CloudRainWind />,
+  "Torrential rain shower": <CloudRainWind />,
+  "Light sleet showers": <CloudSnow />,
+  "Moderate or heavy sleet showers": <CloudSnow />,
+  "Light snow showers": <CloudSnow />,
+  "Moderate or heavy snow showers": <Snowflake />,
+  "Light showers of ice pellets": <CloudHail />,
+  "Moderate or heavy showers of ice pellets": <CloudHail />,
+  "Patchy light rain with thunder": <CloudLightning />,
+  "Moderate or heavy rain with thunder": <CloudLightning />,
+  "Patchy light snow with thunder": <CloudLightning />,
+  "Moderate or heavy snow with thunder": <CloudLightning />,
+};
+
+export const WeatherIcon = (props: LucideProps & { weather: WeatherLabel }) => {
+  const icon = weatherIcons[props.weather] || <Sparkles />;
+  return cloneElement(icon as ReactElement, props);
+};
+
+WeatherIcon.displayName = "WeatherIcon";
